@@ -92,4 +92,4 @@ The add-on sends the contents of the form name, email and message fields to Clea
 
 
 ## Issues
-please raise a Github issue on the menu above.
+Please raise a Github issue on the menu above.
