@@ -65,7 +65,7 @@ Add a hidden field to every form. It is essential that the field has both an id=
 ~~~
 
 #### Configuration files
-- For each form you will need to produce a configuration file that contains the field IDs of the name, email, message and honeypot fields. (there is a fallback config file that uses the field ids from the example in Perch documentation but this is unlikely to be usefull the honeypot field name is probably incorrect).  The config file should be placed in the folder perch/addons/apps/impeng_cleantalk/config/ with a filename config.[formKey].php (The formKey is the all lowercase version of the name without spaces).An exaple file would look like the one below but with your forms field names substituted. There is an file called gonfig.example.php which you can edit and rename. 
+- For each form you will need to produce a configuration file that contains the field IDs of the name, email, message and honeypot fields. (there is a fallback config file that uses the field ids from the example in Perch documentation but this is unlikely to be usefull the honeypot field name is probably incorrect).  The config file should be placed in the folder perch/addons/apps/impeng_cleantalk/config/ with a filename config.[formKey].php (The formKey is the all lowercase version of the name without spaces).An example file would look like the one below but with your forms field names substituted. There is a file called config.example.php which you can edit and rename. 
 
 ```
 <?php
@@ -84,11 +84,11 @@ Here you will need to add your CleanTalk Access Key. This will be emailed to you
 ![impeng_cleantalk settings screenshot](assets/impeng_cleantalk settings.png)
 
 ## Operation
-The add-on send the contents of the form name, email and message fields to CleanTalk together with several other pieces of information (ipaddress, time to complete form, js enabled, etc). If the form response is itentified as spam the responce ID from CleanTalk is added to the honeypot field (if empty) so that the form will be added to the spam tab of the forms admin page. The form is then redispatched to Perch_forms and will be processed as normal.
+The add-on sends the contents of the form name, email and message fields to CleanTalk together with several other pieces of information (ip address, time to complete form, js enabled, etc). If the form response is identified as spam the response ID from CleanTalk is added to the honeypot field (if empty) so that the form will be added to the spam tab of the forms admin page. The form is then re-dispatched to Perch_forms and will be processed as normal.
 
 ## To Do
 
-- Implement the ability to redispatch to multiple apps (probably copy Ryan Gittings excellent solution in his [Perch Recaptcha](https://github.com/ryangittings/mbk-forms) Perch add-on.
+- Implement the ability to re-dispatch to multiple apps (probably copy Ryan Gittings excellent solution in his [Perch Recaptcha](https://github.com/ryangittings/mbk-forms) Perch add-on.
 
 
 ## Issues
