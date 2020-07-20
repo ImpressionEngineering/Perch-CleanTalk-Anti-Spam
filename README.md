@@ -52,6 +52,14 @@ var date = new Date(); document.getElementsByName("js_on")[0].value = date.getFu
 ~~~
 
 #### Editing forms
+
+The form needs to be sent to the impeng_cleantalk add-on first. It will then pass the the form onto perch_forms with the honeypot field filled with the cleantalk transaction ID if it is identified as spam (see To Do section below). To do this make sure the the app is "impeng_cleantalk" in the Perch form tag. For example:
+
+~~~
+<perch:form id="form-contact" novalidate="novalidate" method="post" app="impeng_cleantalk" role="form" >
+~~~
+
+
 Add a hidden field to every form. It is essential that the field has both an id="js_on" and a name="js_on"
 ```
  <perch:input type="hidden" id="js_on" name="js_on" value="0">
