@@ -111,7 +111,7 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
 
         }
         // prevent passing on js_on field
-        $data['js_on'] = "";
+        unset($SubmittedForm->data['js_on']);
         //Redispatch all submitted forms to Perch forms regardless of enabled/disabled and CleanTalk result
         $SubmittedForm->redispatch('perch_forms');
 
