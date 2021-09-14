@@ -36,7 +36,12 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
                         error_log("impeng_cleantalk is using a default config file, create a specif config file for this form at ".$configFilePath);
                 }
         
-                if ($SubmittedForm->data[$honeypotFieldID] == "") {
+                 // check that honeypot field is present
+                 if (!isset($SubmittedForm->data[$honeypotFieldID])) {
+                    error_log("impeng_cleantalk - A submitted form does not have a honneypot field ".print_r($data, true));
+                }
+        
+                if (isset($SubmittedForm->data[$honeypotFieldID]) && $SubmittedForm->data[$honeypotFieldID] === "") {
 
                         // Configure CleanTalk Account
                         $config_url = 'http://moderate.cleantalk.org/api2.0/';
