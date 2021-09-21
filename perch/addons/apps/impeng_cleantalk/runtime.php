@@ -13,6 +13,7 @@ use lib\Cleantalk;
 use lib\CleantalkAPI;
 
 function impeng_cleantalk_form_handler($SubmittedForm) {
+    if($SubmittedForm->validate()) {
         $API = new PerchAPI(1.0, 'impeng_cleantalk');
         $Settings = $API->get('Settings');
         $data = $SubmittedForm->data;
@@ -119,5 +120,5 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
         unset($SubmittedForm->data['js_on']);
         //Redispatch all submitted forms to Perch forms regardless of enabled/disabled and CleanTalk result
         $SubmittedForm->redispatch('perch_forms');
-
+    }
 }
