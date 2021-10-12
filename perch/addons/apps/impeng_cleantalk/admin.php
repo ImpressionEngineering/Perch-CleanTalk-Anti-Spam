@@ -1,7 +1,7 @@
 <?php
 
 if ($CurrentUser->logged_in()) {
-    $this->register_app('impeng_cleantalk', 'CleanTalk Anti Spam', 50, 'CleanTalk anti spam for Perch Forms', '0.3', true); 
+    $this->register_app('impeng_cleantalk', 'CleanTalk Anti Spam', 50, 'CleanTalk anti spam for Perch Forms', '0.4', true); 
     $this->require_version('impeng_cleantalk', '3.0');
 
     $API  = new PerchAPI(1.0, 'impeng_cleantalk');

@@ -29,8 +29,7 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
                 $configFilePath = __DIR__.'/config/config.'.$formKey.'.php';
                 if(file_exists($configFilePath)) {
                         include ($configFilePath);
-                        error_log("Config file is:");
-                        error_log( print_r( $configFilePath, true ) );
+                        // error_log("Config file is: ".print_r( $configFilePath, true )) ;
                 }
                 else {
                         include(__DIR__.'/config/config.default.php');
@@ -39,7 +38,9 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
         
                  // check that honeypot field is present
                  if (!isset($SubmittedForm->data[$honeypotFieldID])) {
-                    error_log("impeng_cleantalk - A submitted form does not have a honneypot field ".print_r($data, true));
+                    // error_log("impeng_cleantalk - A submitted form does not have a honneypot field ".print_r($data, true));
+                    // Honeypot field is not set so this is SPAM, set the honeypot field so Perch processes as spam.
+                    $SubmittedForm->data[$honeypotFieldID] = "Honeypot field is missing, this must be spam";
                 }
         
                 if (isset($SubmittedForm->data[$honeypotFieldID]) && $SubmittedForm->data[$honeypotFieldID] === "") {
@@ -116,6 +117,9 @@ function impeng_cleantalk_form_handler($SubmittedForm) {
                 }
 
         }
+        // Debugging form redispatch issues
+        // error_log("about to redispatch form: ".print_r($SubmittedForm->data, true));
+
         // prevent passing on js_on field
         unset($SubmittedForm->data['js_on']);
         //Redispatch all submitted forms to Perch forms regardless of enabled/disabled and CleanTalk result
